@@ -1,12 +1,8 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var moment = require('moment-timezone');
 
 // Connect to the database
 mongoose.connect('mongodb://test:test@ds147534.mlab.com:47534/todo-demo');
-
-var currentTime = moment().format;
-// var currentHour = currentTime.tz(tz).get('hour');
 
 // create a schema - this is like a blueprint, define what kind of information expected
 var todoSchema = new mongoose.Schema({
@@ -23,7 +19,6 @@ module.exports = function(app){
         // get data from mongodb and pass it to view
         // empty object means all data
         Todo.find({}, function(err, data){
-            console.log(currentTime);
             if (err) throw err;
             res.render('todo', {todos: data});
         });
