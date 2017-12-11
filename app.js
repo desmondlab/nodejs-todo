@@ -15,7 +15,7 @@ app.use(express.static('./public'));
 todoController(app);
 
 var currentTime = moment();
-var tz = currentTime.tz.guess();
+var tz = moment.tz.guess();
 var currentHour = currentTime.tz(tz).get('hour');
 console.log(currentHour);
 
